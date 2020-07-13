@@ -1,11 +1,16 @@
 import React from 'react';
 import styles from './Hero.scss';
+import propTypes from 'prop-types';
 
-const Hero = () => (
+const Hero = props => (
   <header className={styles.component}>
-    <h2 className={styles.title}>Star Wars</h2>
+    <h2 className={styles.title}>{props.titleText}</h2>
     <img className={styles.image} src="http://uploads.kodilla.com/bootcamp/fer/11.react/space.png"></img>
   </header>
 );
 
+Hero.propTypes = {
+    titleText: PropTypes.node,
+  };
+  
 export default Hero;
