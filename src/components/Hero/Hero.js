@@ -1,11 +1,11 @@
 import React from 'react';
-import styles from './MyComponent.scss';
+import styles from './Hero.scss';
 
-const MyComponent = () => (
-  <header>
-    <h2>Life is beautiful</h2>
-    <img src="http://uploads.kodilla.com/bootcamp/fer/11.react/space.png"></img>
+const Hero = () => (
+  <header className={styles.component}>
+    <h2 className={styles.title}>Star Wars</h2>
+    <img className={styles.image} src="http://uploads.kodilla.com/bootcamp/fer/11.react/space.png"></img>
   </header>
 );
 
-export default MyComponent;
+export default Hero;
