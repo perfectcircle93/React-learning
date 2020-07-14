@@ -2,6 +2,7 @@ import React from 'react';
 import styles from './List.scss';
 import Hero from '../Hero/Hero.js';
 import PropTypes from 'prop-types';
+import Column from '../Column/Column.js';
 
 class List extends React.Component {
     static PropTypes = {
@@ -20,6 +21,11 @@ class List extends React.Component {
           <Hero titleText={this.props.title} image={this.props.image}/>
           <div className={styles.description}>
               {this.props.children}
+          </div>
+          <div className={styles.columns}>
+            <Column columnTitle={'first'}/>
+            <Column columnTitle={'second'}/>
+            <Column columnTitle={'third'}/>
           </div>
         </section>
       </div>
