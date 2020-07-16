@@ -13,7 +13,7 @@ class App extends React.Component {
           <List {...listData} />
         </main>
       </div>
-    )
+    );
   }
 }
 
