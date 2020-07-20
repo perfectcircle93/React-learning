@@ -5,6 +5,7 @@ import Card from '../Card/Card';
 import { settings } from '../../data/dataStore';
 import Creator from '../Creator/Creator.js';
 import Icon from '../Icon/Icon.js';
+import { Droppable } from 'react-beautiful-dnd';
 
 class Column extends React.Component {
 
@@ -19,16 +20,27 @@ class Column extends React.Component {
 
 
     render() {
-      const {title, icon, cards, addCard} = this.props;
+      const {title, icon, cards, addCard, id} = this.props;
       return (
         <section className={styles.component}>
           <h3 className={styles.title}>{title}
             <span className={styles.icon}><Icon name={icon}/></span>
           </h3>
           <div>
-            {cards.map(cardData => (
-              <Card key={cardData.id} {...cardData} />
-            ))}
+            <Droppable droppableId={id}>
+              {provided => (
+                <div className={styles.cards}
+                  {...provided.droppableProps}
+                  ref={provided.innerRef}
+                >
+                  {cards.map(cardData => (
+                    <Card key={cardData.id} {...cardData} />
+                  ))}
+
+                  {provided.placeholder}
+                </div>
+              )}
+            </Droppable>
           </div>
           <div>
             <Creator text={settings.cardCreatorText} action={addCard} />
@@ -44,6 +56,7 @@ Column.propTypes = {
   icon: PropTypes.node,
   cards: PropTypes.node,
   addCard: PropTypes.node,
+  id: PropTypes.string,
 };
   
 

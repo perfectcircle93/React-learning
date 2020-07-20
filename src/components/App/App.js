@@ -4,6 +4,7 @@ import List from '../List/ListContainer.js';
 //import {pageContents, listData} from '../../data/dataStore';
 import PropTypes from 'prop-types';
 import Search from '../Search/SearchContainer.js';
+import {DragDropContext} from 'react-beautiful-dnd';
 
 class App extends React.Component {
   static propTypes = {
@@ -13,14 +14,19 @@ class App extends React.Component {
   }
   render() {
     const {title, subtitle, lists} = this.props;
+    const moveCardHandler = result => {
+      console.log(result);
+    };
     return (
       <main className={styles.component}>
         <h1 className={styles.title}>{title}</h1>
         <h2 className={styles.subtitle}>{subtitle}</h2>
         <div><Search/></div>
-        {lists.map(listData => (
-          <List key={listData.id} {...listData} />
-        ))}
+        <DragDropContext onDragEnd={moveCardHandler}>
+          {lists.map(listData => (
+            <List key={listData.id} {...listData} />
+          ))}
+        </DragDropContext>
   
       </main>
     );
