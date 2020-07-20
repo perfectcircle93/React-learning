@@ -1,1 +1,1 @@
-web: npm init
+web: npm run server package.json
