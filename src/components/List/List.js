@@ -6,6 +6,7 @@ import Column from '../Column/ColumnContainer.js';
 import {settings} from '../../data/dataStore';
 import ReactHtmlParser from 'react-html-parser';
 import Creator from '../Creator/Creator.js';
+import { DragDropContext } from 'react-beautiful-dnd';
 
 class List extends React.Component {
     static PropTypes = {
@@ -19,6 +20,11 @@ class List extends React.Component {
       description: settings.defaultListDescription,
     }
 
+    onDragEnd(result) {
+      console.log(this.props);
+      this.props.moveCard(result.draggableId, result.source.droppableId, result.destination.droppableId);
+    }
+
 
     render() {
       const {title, image, description, columns, addColumn} = this.props;
@@ -30,9 +36,11 @@ class List extends React.Component {
               {ReactHtmlParser(description)}
             </div>
             <div className={styles.columns}>
-              {columns.map(columnData => (
-                <Column key={columnData.id} {...columnData} />
-              ))}
+              <DragDropContext onDragEnd={(result) => { this.onDragEnd(result); }}>
+                {columns.map(columnData => (
+                  <Column key={columnData.id} {...columnData} />
+                ))}
+              </DragDropContext>
             </div>
             <div className={styles.creator}>
               <Creator text={settings.columnCreatorText} action={addColumn} />
@@ -49,6 +57,7 @@ List.propTypes = {
   image: PropTypes.node,
   columns: PropTypes.node,
   addColumn: PropTypes.node,
+  moveCard: PropTypes.node,
 };
 
 
