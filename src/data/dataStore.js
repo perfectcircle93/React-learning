@@ -1,52 +1,84 @@
 export const settings = {
-  columnCreatorText: 'Add new column',
-  cardCreatorText: 'Add new card',
+  columnCreatorText: 'Dodaj nową listę',
+  cardCreatorText: 'Dodaj nowe zadanie',
   creator: {
     buttonOK: 'OK',
     buttonCancel: 'Cancel',
     defaultText: 'Add new item',
   },
+
+  defaultListDescription: '<p>I can do all the things!!!</p>',
+  defaultColumnIcon: 'list-alt',
+
   search: {
     defaultText: 'Search...',
     icon: 'search',
   },
-  defaultListDescription: '<p>I can do all the things!!!</p>',
-  defaultColumnIcon: 'list-alt',
+
+  navbar: {
+    toHome: '/',
+    toInfo: '/info',
+    toFAQ: '/faq',
+    icon: 'rocket',
+    classNameActive: 'active',
+  },
+
+  home: {
+    title: 'Things to do <sup>soon!</sup>',
+    image: 'http://uploads.kodilla.com/bootcamp/fer/11.react/space.png',
+  },
+
+  info: {
+    title: 'INFO',
+    image: 'http://uploads.kodilla.com/bootcamp/fer/11.react/space.png',
+    containerTitle: 'Info',
+    containerText: 'Things about the app',
+  },
+
+  FAQ: {
+    title: 'FAQ',
+    image: 'http://uploads.kodilla.com/bootcamp/fer/11.react/space.png',
+    question1: 'What is your favourite movie?',
+    answer1: 'Spider Man',
+    question2: 'Why?',
+    answer2: 'I like spiders',
+  },
+
 };
 
 export const pageContents = {
-  title: 'My first React app',
-  subtitle: 'A simple to-do app, with lists, columns and cards',
+  title: 'First react app',
+  subtitle: 'Hello',
 };
 
 export const listData = {
-  title: 'Things to do <sup>soon!</sup>',
-  description: 'Interesting things I want to check out!',
+  title: 'Hello<sup>there</sup>',
+  description: 'How are you?',
   image: 'http://uploads.kodilla.com/bootcamp/fer/11.react/space.png',
   columns: [
     {
       key: 0,
-      title: 'Books',
+      title: 'Nauka',
       icon: 'book',
       cards: [
         {
           key: 0,
-          title: 'This Is Going to Hurt',
+          title: 'React',
         },
         {
           key: 1,
-          title: 'Interpreter of Maladies',
+          title: 'Redux',
         },
       ],
     },
     {
       key: 1,
-      title: 'Movies',
+      title: 'Filmy',
       icon: 'film',
       cards: [
         {
           key: 0,
-          title: 'Harry Potter',
+          title: 'Ogród Fauna',
         },
         {
           key: 1,
@@ -56,16 +88,16 @@ export const listData = {
     },
     {
       key: 2,
-      title: 'Games',
+      title: 'Rozrywka',
       icon: 'gamepad',
       cards: [
         {
           key: 0,
-          title: 'The Witcher',
+          title: 'Pograć...',
         },
         {
           key: 1,
-          title: 'Skyrim',
+          title: 'i jeszcze raz pograć',
         },
       ],
     },
@@ -75,10 +107,25 @@ export const listData = {
 const lists = [
   {
     id: 'list-1',
-    title: 'Things to do <sup>soon!</sup>',
-    description: 'Interesting things I want to check out!',
+    title: 'FAVOURITE <sup>feautures</sup>',
+    description: 'Interesting things I want to check out',
     image: 'http://uploads.kodilla.com/bootcamp/fer/11.react/space.png',
   },
+
+  {
+    id: 'list-2',
+    title: 'THINGS <sup>to do</sup>',
+    description: 'Plan for the day',
+    image: 'http://uploads.kodilla.com/bootcamp/fer/11.react/space.png',
+  },
+  {
+    id: 'list-3',
+    title: 'SHOPPING<sup>list</sup>',
+    description: 'What to buy',
+    image: 'http://uploads.kodilla.com/bootcamp/fer/11.react/space.png',
+  },
+
+
 ];
 
 const columns = [
@@ -103,7 +150,7 @@ const columns = [
   {
     id: 'column-4',
     listId: 'list-2',
-    title: 'Strange column',
+    title: 'How to',
     icon: 'question',
   },
 ];
@@ -119,7 +166,7 @@ const cards = [
     id: 'card-2',
     columnId: 'column-1',
     title: 'Interpreter of Maladies',
-    index: 1, 
+    index: 1,
   },
   {
     id: 'card-3',
