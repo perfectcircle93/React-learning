@@ -6,6 +6,7 @@ import Icon from '../Icon/Icon';
 import PropTypes from 'prop-types';
 import { settings } from '../../data/dataStore';
 
+
 class Header extends React.Component {
     static propTypes = {
       toHome: PropTypes.string,
