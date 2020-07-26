@@ -1,8 +1,13 @@
-import shortid from 'shortid';
-
+import initialStoreData from '../src/data/dataStore';
 // selectors
-export const getCardsForColumn = ({cards, searchString}, columnId) => cards.filter(card =>
-  card.columnId == columnId && new RegExp(searchString, 'i').test(card.title));
+export const getCardsForColumn = ({cards}, columnId) => cards.filter(card =>
+  card.columnId == columnId); 
+export const getSearchCardsForColumn = ({ cards, columns, lists } , searchString) => cards.filter(card => new RegExp(searchString, 'i').test(card.title)).map(card => ({
+  ...card,
+  columnName: columns.find(col => col.id === card.columnid).title,
+  listName: lists.find(list => list.id === columns.find(col => col.id === card.columnId).listId).title,
+}));
+export const countAllCards = ({ cards }) => cards.length;
 
 // action name creator
 const reducerName = 'cards';
@@ -13,7 +18,7 @@ export const ADD_CARD = createActionName('ADD_CARD');
 export const MOVE_CARD = createActionName('MOVE_CARD');
 
 // action creators
-export const createActionAddCard = payload => ({ payload: { ...payload, id: shortid.generate() }, type: ADD_CARD });
+export const createActionAddCard = payload => ({ payload: { ...payload, id: `card-${countAllCards(initialStoreData) + 1}` }, type: ADD_CARD });
 export const createAction_moveCard = payload => ({ payload: { ...payload }, type: MOVE_CARD });
 
 // reducer

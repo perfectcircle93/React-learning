@@ -2,7 +2,8 @@ import {connect} from 'react-redux';
 import Home from './Home';
 import {createAction_moveCard} from '../../../redux/cardsRedux';
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state, props) => ({
+  id: props.match.params.id,
   title: state.app.title,
   subtitle: state.app.title,
   lists: state.lists,
