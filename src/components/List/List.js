@@ -33,7 +33,7 @@ class List extends React.Component {
         <div id="app">
           <section className={styles.component}>
             <Container>
-              <Hero titleText={title} image={image} />
+              <Hero title={title} image={image} />
               <div className={styles.description}>
                 {ReactHtmlParser(description)}
               </div>
