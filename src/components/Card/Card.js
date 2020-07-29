@@ -7,23 +7,36 @@ class Card extends React.Component {
 
     static propTypes = {
       title: PropTypes.node.isRequired,
+      draggable: PropTypes.boolean,
     }
+
     render() {
-      const {title, id, index} = this.props;
-      return (
-        <Draggable draggableId={id} index={index}>
-          {(provided) => (
-            <article
-              className={styles.component}
-              {...provided.draggableProps}
-              {...provided.dragHandleProps}
-              ref={provided.innerRef}
-            >
-              {title}
-            </article>
-          )}
-        </Draggable>
-      );
+      const {title, id, index, draggable} = this.props;
+
+      if(draggable) {
+        return (
+          <Draggable draggableId={id} index={index}>
+            {(provided) => (
+              <article
+                className={styles.component}
+                {...provided.draggableProps}
+                {...provided.dragHandleProps}
+                ref={provided.innerRef}
+              >
+                {title}
+              </article>
+            )}
+          </Draggable>
+        );
+    
+      } else {
+        return (
+          <article
+            className={styles.component}>
+            {title}
+          </article>
+        );
+      }
     }
 }
 

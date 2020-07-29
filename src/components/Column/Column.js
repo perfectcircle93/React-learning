@@ -34,7 +34,7 @@ class Column extends React.Component {
                   ref={provided.innerRef}
                 >
                   {cards.map(cardData => (
-                    <Card key={cardData.id} {...cardData} />
+                    <Card droppable={true} key={cardData.id} {...cardData} />
                   ))}
 
                   {provided.placeholder}
