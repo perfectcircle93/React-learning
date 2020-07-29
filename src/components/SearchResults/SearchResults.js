@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './SearchResults.scss';
 import PropTypes from 'prop-types';
 import Card from '../Card/Card.js';
-//import {Link} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import ReactHtmlParser from 'react-html-parser';
 
 
@@ -23,10 +23,9 @@ class SearchResults extends React.Component {
           {cards.map(cardData => (
             <div key={cardData.id} className={styles.wrapper}>
               <Card key={cardData.id} {...cardData} />
-              <p>{ReactHtmlParser(`Column: ${cardData.columnName}, List: ${cardData.listName}`)}</p>
-              {/*<Link className={styles.link} to={`/list/${cardData.listId}`}>
+              <Link className={styles.link} to={`/list/${cardData.listId}`}>
                 <p>{ReactHtmlParser(`Column: ${cardData.columnName}, List: ${cardData.listName}`)}</p>
-          </Link>*/}
+              </Link>
             </div>
           ))}
         </div>
