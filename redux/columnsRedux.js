@@ -1,4 +1,6 @@
-import shortid from 'shortid';
+//import shortid from 'shortid';
+import initialStoreData from '../src/data/dataStore';
+
 
 // selectors
 export const getColumnsForList = ({columns}, listId) => columns.filter(column => column.listId == listId);
@@ -17,7 +19,7 @@ const createActionName = name => `app/${reducerName}/${name}`;
 export const ADD_COLUMN = createActionName('ADD_COLUMN');
 
 // action creators
-export const createActionAddColumn = payload => ({ payload: { ...payload, id: shortid.generate() }, type: ADD_COLUMN });
+export const createActionAddColumn = payload => ({ payload: { ...payload, id: `column-${countAllColumns(initialStoreData) + 1}` }, type: ADD_COLUMN });
 
 // reducer
 export default function reducer(state = [], action = {}) {
